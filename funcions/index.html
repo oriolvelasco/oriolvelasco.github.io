@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<head>
+	<title>Function solver</title>
+	<link rel="stylesheet" type="text/css" href="estil.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script>
+	
+	/*function Escriu(valor) {
+    	//this.passaArray = valor.split('x');
+    	this.passaArray = valor.replace(" ", "");
+    	this.a = parseInt(this.passaArray[0].replace(" ", "").replace("+", "").replace("^2", ""));
+		this.b = parseInt(this.passaArray[1].replace(" ", "").replace("+", "").replace("^2", ""));
+		this.c = parseInt(this.passaArray[2].replace(" ", "").replace("+", "").replace("^2", ""));
+		this.resolEq();
+	}
+
+	Escriu.prototype.resolEq = function() {
+		var d = this.b * this.b - 4 * this.a * this.c;
+		
+		if (d < 0) {
+			alert("No hi ha talls amb l'eix x");
+		};
+
+		if (d==0) {
+			var solucio = -this.b / (2*this.a);
+			alert(solucio);
+		};
+
+		if (d>0) {
+			alert("juasjuas")
+			var sol1 = -this.b + Math.sqrt(d) / (2*this.a);
+			var sol2 = -this.b - Math.sqrt(d) / (2*this.a);
+			alert(sol1 + " " + sol2);
+		};
+	};
+
+	function propToFunction(tally) {
+		this.c=tally;
+		this.a=Math.round(Math.random()*10);
+		this.b=Math.round(Math.random()*10);
+		this.resposta = "La funcio que compleix les propietats es " + this.a + "x^2 + " + this.b + "x + " + this.c;
+		alert(this.resposta);
+
+	}
+
+ 
+	function getPropieties() {
+		var funcio = new Escriu(document.getElementById('entrefun').value);
+	}
+
+	function getFunction() {
+		var funcio = new propToFunction(document.getElementById('eixy').value);
+	}*/
+
+
+	function Constant(valor) {
+		if (valor!="random") {
+			this.k = valor;
+			document.getElementById('output').innerHTML="f(x) = " + this.k;
+		};
+
+		if (valor=="random") {
+			this.k = Math.round(Math.random()*10+1);
+			document.getElementById('output').innerHTML="f(x) = " + this.k;
+		};
+		
+	}
+
+	function linialAfi(tipus, valor) {
+		this.tipus = tipus;
+		this.a = Math.round(Math.random()*10+1);
+		
+		if (this.tipus=="linial") {
+			document.getElementById('output').innerHTML = "f(x) = " + this.a + "x";
+		}
+
+		if (this.tipus=="afi") {
+			this.valor=valor;
+			if(this.valor=="random") {
+				this.b = Math.round(Math.random()*10+1);
+				document.getElementById('output').innerHTML = "f(x) = " + this.a + "x + " + this.b;
+			}
+
+			else {
+				this.b = this.valor;
+				document.getElementById('output').innerHTML = "f(x) = " + this.a + "x + " + this.b;
+			}
+		}
+
+		if(this.tipus = "paralela") {
+			var b = Math.round(Math.random()*10+1);
+			var b2 = Math.round(Math.random()*10+1);
+			document.getElementById('output').innerHTML = "f(x) = " + this.a + "x + " + this.b + "	" + ;
+		}
+
+		if(this.tipus = "perpendicular") {
+			this.creaPerprndicular();
+		}
+	}
+
+	linialAfi.prototype.creaParaleles = function() {
+		var b = Math.round(Math.random()*10+1);
+		var b2 = Math.round(Math.random()*10+1);
+	}
+
+	linialAfi.prototype.creaPerprndicular = function() {
+
+	}
+
+	function novaConstant() {
+		if(!document.getElementById('eixYc').value) {
+			var constant = new Constant("random");
+		}
+
+		else {
+			var constant = new Constant(document.getElementById('eixYc').value);
+		}
+	}
+
+	function novaLinial() {
+		var linial = new linialAfi("linial");
+	}
+
+	function novaAfi() {
+		if(!document.getElementById('eixYaf').value) {
+			var afi = new linialAfi("afi", "random");
+		}
+
+		else {
+			var afi = new linialAfi("afi", document.getElementById('eixYaf').value);
+		}
+	}
+	}
+
+	</script>
+
+	<script>
+		$(document).ready(function(){
+			$(".container").hide();
+
+			$("#constant").click(function() {
+				$("#clinial").hide();
+				$("#cconstant").toggle( "bounce", { distance: 10, times: 1 }, 1000 );
+			});
+
+			$("#linial").click(function() {
+				$("#cconstant").hide();
+				$("#clinial").toggle( "bounce", { distance: 10, times: 1 }, 1000 );
+			});
+		});
+
+	</script>
+
+</head>
+
+
+<body>
+<h1>Function solver</h1>
+<p id="demo"></p>
+<p id="description">Introduce a function to get its propieties. Introduce conditions to get a function that fits them.</p>
+	<!--div id = "fp">
+		<input id = "entrefun" type="text">
+		<button onclick="getPropieties()">Click me</button>
+	</div-->
+		
+	<div id="pf">
+		<h2 id="constant">Funci&oacute; constant (paral&middot;lela eix x)</h2>
+		<div class="container" id="cconstant">
+			<input id = "eixYc" type="text" placeholder="Tall amb l'eix y">
+			<button class="boto" onclick="novaConstant()">Give me a function!</button>
+		</div>
+
+		<h2 id="linial">Funcions linials i afins</h2>
+		<div class = "container" id="clinial">
+			<p>Funci&oacute; linial</p>
+			<button class ="boto" onclick="novaLinial()">Give me a function!</button>
+			<p>Funci&oacute; af&iacute;</p>
+			<input id = "eixYaf" type="text" placeholder="Tall amb l'eix y">
+			<button class ="boto" onclick="novaAfi()">Give me a function!</button>
+			<p>Funcions paral&middot;leles</p>
+			<button class ="boto" onclick="novaParalela()">Give me a function!</button>
+			<p>Funcions perpendiculars</p>
+			<button class ="boto" onclick="novaPerpendicular()">Give me a function!</button>
+		</div>
+	</div>
+
+	<p id="output">AAAAA<p>
+</body>
+</html>
