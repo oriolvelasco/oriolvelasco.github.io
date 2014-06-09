@@ -152,4 +152,8 @@ float: right;
 
 h1 {
 	font-family: "ubuntul";
+	position: absolute;
+	top: 10px;
+	left: 0px;
+	font-size: 300%;
 }
