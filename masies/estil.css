@@ -108,6 +108,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000247', end
 text-align:right;
 right:0%;
 z-index: 9999;
+font-family: "ubuntu";
 }
 
 .menu:hover {
@@ -131,4 +132,20 @@ left:-27px;
 white-space: nowrap;
 color: #AAA;
 float: right;
+}
+
+@font-face {  
+	font-family: 'ubuntul';  
+	src: url('UbuntuL.eot');  
+	src: local('UbuntuL'),   
+	 local('UbuntuL'),  
+	 url('UbuntuL.ttf') format('truetype');    
+}
+
+@font-face {  
+	font-family: 'ubuntu';  
+	src: url('Ubuntu.eot');  
+	src: local('UbuntuL'),   
+	 local('Ubuntu'),  
+	 url('Ubuntu.ttf') format('truetype');    
 }
