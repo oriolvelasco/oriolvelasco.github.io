@@ -19,6 +19,11 @@ img.bg {
   }*/
 
   width: 100%;
+  position: fixed;
+}
+
+body {
+	overflow: hidden;
 }
 
 
