@@ -2,10 +2,20 @@
 <head>
 	<title>Evolució dels usos de les masies</title>
 	<link rel="stylesheet" type="text/css" href="estil.css">
-	<style>
-	</style>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  	<script>
+  	$("#tot").hide();
+  	$(document).ready(function() {
+  		$("#tot").show();
+  		$("#josan").hide();
+  	})
+
+  	</script>
 </head>
 <body>
+<div id ="josan">Loading... Josan please wait...</div>
+<div id="tot">
 <h1>EVOLUCIÓ DELS USOS DE LES MASIES</h1>
 <img class = "bg" src ="fons.jpg">
 	<div class = "menu">
@@ -21,6 +31,7 @@
 			<li><a href="#">More things</a>
 			</li>
 		</ul>
+	</div>
 	</div>
 </body>
 </html>
