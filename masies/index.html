@@ -5,7 +5,15 @@
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   	<script>
-	
+  	$(document).ready(function() {
+		$('li a').click(function () {
+			$('.menu').animate({
+				scrollTop: 0
+			}, 800);
+			$('h1').fadeOut(100);
+		});
+  	})
+  	
   	</script>
 </head>
 <body>
@@ -28,11 +36,5 @@
 		</ul>
 	</div>
 	</div>
-	<script>
-	$('#h').text("jjj");
-	$(document).click(function() {
-		alert("bvgn");
-	});
-  	</script>
 </body>
 </html>
