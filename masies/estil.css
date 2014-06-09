@@ -91,6 +91,7 @@ text-decoration: underline;
 
 
 .menu {
+opacity: 0.7;
 font-family: "ubuntu";
 position: fixed; 
 top: 130px;
