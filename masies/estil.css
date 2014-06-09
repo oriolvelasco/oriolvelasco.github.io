@@ -149,3 +149,7 @@ float: right;
 	 local('Ubuntu'),  
 	 url('Ubuntu.ttf') format('truetype');    
 }
+
+h1 {
+	font-family: "ubuntul";
+}
