@@ -110,6 +110,10 @@ right:0%;
 z-index: 9999;
 }
 
+.menu:hover {
+	opacity: 0.9;
+}
+
 .menu:before { 
 	content: ""; 
 	position: absolute; 
