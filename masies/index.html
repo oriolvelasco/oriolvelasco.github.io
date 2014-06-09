@@ -7,8 +7,8 @@
   	<script>
   	$(document).ready(function() {
 		$('li a').click(function () {
-			$('h1').fadeOut(100)
-			$('.menu').animate({top: 0}, "2000");
+			$('h1').fadeOut(100);
+			$('.menu').animate({top: 0}, "2000", "easeOutQuart");
 		});
 	});
   	
@@ -18,7 +18,6 @@
 <div id="tot">
 <h1 id ="h">EVOLUCIÓ DELS USOS DE LES MASIES</h1>
 <img class = "bg" src ="fons.jpg">
-<p class="b">www</p>
 	<div class = "menu">
 		<ul>
 			<li><a href="#">Introducci&oacute;</a>
@@ -33,6 +32,13 @@
 			</li>
 		</ul>
 	</div>
+
+	<div id="introduccio">
+		<h2>Introducció</h2>
+		<p>
+
+	</div>
+
 	</div>
 </body>
 </html>
