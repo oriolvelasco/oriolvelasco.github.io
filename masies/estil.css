@@ -145,7 +145,7 @@ h1 {
 h2 {
 	text-align: center;
 	font-family: "ubuntul";
-	font-size: 150%;
+	font-size: 170%;
 	text-decoration: underline;
 }
 
@@ -158,6 +158,10 @@ h2 {
 	height: auto;
 	margin:0 auto;
 	z-index: 999999;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
 }
 
 p {
