@@ -158,10 +158,10 @@ h2 {
 	height: auto;
 	margin:0 auto;
 	z-index: 999999;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-o-border-radius: 5px;
-	border-radius: 5px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+	-o-border-radius: 200px;
+	border-radius: 200px;
 }
 
 p {
