@@ -5,7 +5,7 @@
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   	<script>
-  	$(window).load(function() {
+  	$(document).ready(function() {
   		var objectius = 0;
   		var introduccio = 0;
   		var treball = 0;
@@ -13,59 +13,60 @@
 
 
 		$(".apartat").hide();
-
-		$('li a').click(function () {
-			$('h1').fadeOut(100);
-			$('.menu').animate({top: 0}, "2000");
-		});
-
-		$("#intro").click(function() {
-			if (introduccio==0) {
-				$(".apartat").fadeOut(100);
-				setTimeout(function(){$("#introduccio").fadeIn(800);}, 200);
-				introduccio=1;
-				objectius = 0;
-  				treball = 0;
-  				conclusions = 0;
-			};
 		
-		});
+		$(window).load(function() { 
+			$('li a').click(function () {
+				$('h1').fadeOut(100);
+				$('.menu').animate({top: 0}, "2000");
+			});
 
-		$("#ob").click(function() {
-			if (objectius==0) {
-				$(".apartat").fadeOut(100);
-				setTimeout(function(){$("#objectius").fadeIn(800);}, 200);
-				objectius=1;
-  				introduccio = 0;
-  				treball = 0;
-  				conclusions = 0;
-			};
-		});
-
-
-		$("#camp").click(function() {
-			if (treball==0) {
-				$(".apartat").fadeOut(100);
-				setTimeout(function(){$("#treballc").fadeIn(800);}, 200);
-				objectius=0;
-  				introduccio = 0;
-  				treball = 1;
-  				conclusions = 0;
-			};
-		});
-
-		$("#concl").click(function() {
-			if (conclusions==0) {
-				$(".apartat").fadeOut(100);
-				setTimeout(function(){$("#conclusions").fadeIn(800);}, 200);
-				objectius=0;
-  				introduccio = 0;
-  				treball = 0;
-  				conclusions = 1;
-			};
-		});
-
+			$("#intro").click(function() {
+				if (introduccio==0) {
+					$(".apartat").fadeOut(100);
+					setTimeout(function(){$("#introduccio").fadeIn(800);}, 200);
+					introduccio=1;
+					objectius = 0;
+  					treball = 0;
+  					conclusions = 0;
+				};
 		
+			});
+
+			$("#ob").click(function() {
+				if (objectius==0) {
+					$(".apartat").fadeOut(100);
+					setTimeout(function(){$("#objectius").fadeIn(800);}, 200);
+					objectius=1;
+  					introduccio = 0;
+  					treball = 0;
+  					conclusions = 0;
+				};
+			});
+
+
+			$("#camp").click(function() {
+				if (treball==0) {
+					$(".apartat").fadeOut(100);
+					setTimeout(function(){$("#treballc").fadeIn(800);}, 200);
+					objectius=0;
+  					introduccio = 0;
+  					treball = 1;
+  					conclusions = 0;
+				};
+			});
+
+			$("#concl").click(function() {
+				if (conclusions==0) {
+					$(".apartat").fadeOut(100);
+					setTimeout(function(){$("#conclusions").fadeIn(800);}, 200);
+					objectius=0;
+  					introduccio = 0;
+  					treball = 0;
+  					conclusions = 1;
+				};
+			});
+
+		});
 	});
   	
   	</script>
