@@ -6,6 +6,12 @@
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   	<script>
   	$(document).ready(function() {
+  		var objectius = 0;
+  		var introduccio = 0;
+  		var treball = 0;
+  		var conclusions = 0;
+
+
 		$(".apartat").hide();
 
 		$('li a').click(function () {
@@ -14,13 +20,20 @@
 		});
 
 		$("#intro").click(function() {
-			$(".apartat").fadeOut(100);
-			setTimeout(function(){$("#introduccio").fadeIn(800);}, 200);
+			if (introduccio==0) {
+				$(".apartat").fadeOut(100);
+				setTimeout(function(){$("#introduccio").fadeIn(800);}, 200);
+				introduccio=1;
+			};
+		
 		});
 
 		$("#ob").click(function() {
-			$(".apartat").fadeOut(100);
-			setTimeout(function(){$("#objectius").fadeIn(800);}, 200);
+			if (objectius==0) {
+				$(".apartat").fadeOut(100);
+				setTimeout(function(){$("#objectius").fadeIn(800);}, 200);
+				objectius=1;
+			};
 		});
 
 		
