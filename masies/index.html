@@ -54,6 +54,17 @@
 			};
 		});
 
+		$("#conclusions").click(function() {
+			if (conclusions==0) {
+				$(".apartat").fadeOut(100);
+				setTimeout(function(){$("#concl").fadeIn(800);}, 200);
+				objectius=0;
+  				introduccio = 0;
+  				treball = 0;
+  				conclusions = 1;
+			};
+		});
+
 		
 	});
   	
