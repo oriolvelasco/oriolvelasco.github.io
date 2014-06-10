@@ -150,7 +150,7 @@ h2 {
 
 .apartat {
 	background-color: rgba(250, 250, 250, 0.7);
-	position: absolute;
+	/*position: absolute;*/
 	top: 80px;
 	overflow: auto;
 	width: 80%;
