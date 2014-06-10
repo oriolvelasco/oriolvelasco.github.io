@@ -54,10 +54,10 @@
 			};
 		});
 
-		$("#conclusions").click(function() {
+		$("#concl").click(function() {
 			if (conclusions==0) {
 				$(".apartat").fadeOut(100);
-				setTimeout(function(){$("#concl").fadeIn(800);}, 200);
+				setTimeout(function(){$("#conclusions").fadeIn(800);}, 200);
 				objectius=0;
   				introduccio = 0;
   				treball = 0;
@@ -82,7 +82,7 @@
 			</li>
 			<li><a id ="camp" href="#">Treball de camp</a>
 			</li>
-			<li><a id ="conclusions" href="#">Conclusions</a>
+			<li><a id ="concl" href="#">Conclusions</a>
 			</li>
 			<li><a id ="things" href="#">More things</a>
 			</li>
@@ -111,7 +111,7 @@
 		<h2>Treball de Camp</h2>
 		<p></p>
 	</div>
-	<div id="concl" class="apartat">
+	<div id="conclusions" class="apartat">
 		<h2>Conclusió</h2>
 		<p></p>
 	</div>
