@@ -6,10 +6,18 @@
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   	<script>
   	$(document).ready(function() {
+		$(".apartat").hide();
+
 		$('li a').click(function () {
 			$('h1').fadeOut(100);
 			$('.menu').animate({top: 0}, "2000");
 		});
+
+		$("#intro").click(function() {
+			$("#introduccio").show();
+		});
+
+		
 	});
   	
   	</script>
@@ -20,21 +28,37 @@
 <img class = "bg" src ="fons.jpg">
 	<div class = "menu">
 		<ul>
-			<li><a href="#">Introducci&oacute;</a>
+			<li><a id ="intro" href="#">Introducci&oacute;</a>
 			</li>
-			<li><a href="#">Objectius</a>
+			<li><a id ="ob" href="#">Objectius</a>
 			</li>
-			<li><a href="#">Treball de camp</a>
+			<li><a id ="camp" href="#">Treball de camp</a>
 			</li>
-			<li><a href="#">Conclusions</a>
+			<li><a id ="conclusions" href="#">Conclusions</a>
 			</li>
-			<li><a href="#">More things</a>
+			<li><a id ="things" href="#">More things</a>
 			</li>
 		</ul>
 	</div>
 
 	<div id="introduccio" class="apartat">
 		<h2>Introducció</h2>
+		<p></p>
+	</div>
+	<div id="objectius" class="apartat">
+		<h2>Objectius</h2>
+		<p></p>
+	</div>
+	<div id="treballc" class="apartat">
+		<h2>Treball de Camp</h2>
+		<p></p>
+	</div>
+	<div id="concl" class="apartat">
+		<h2>Conclusió</h2>
+		<p></p>
+	</div>
+	<div id="th" class="apartat">
+		<h2>Altres</h2>
 		<p></p>
 	</div>
 
