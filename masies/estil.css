@@ -140,6 +140,7 @@ h1 {
 	font-size: 350%;
 	z-index: 1000;
 	color: #000;
+	text-transform: uppercase;
 }
 
 h2 {
