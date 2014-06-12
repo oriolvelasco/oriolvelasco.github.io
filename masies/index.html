@@ -10,6 +10,9 @@
   		var introduccio = 0;
   		var treball = 0;
   		var conclusions = 0;
+  		var agricultura = 0;
+  		var ramaderia = 0;
+  		var bosc = 0;
 
 
 		$(".apartat").hide();
@@ -66,6 +69,42 @@
 				};
 			});
 
+
+
+			$("#agricultura").click(function() {
+				if (agricultura==0) {
+					$("#agri").fadeIn(500);
+					$("#rama").hide();
+					$("#bc").hide();
+					ramaderia=0;
+					agricultura=1;
+					bosc=0;
+				};
+			});
+
+			$("#ramaderia").click(function() {
+				if (ramaderia==0) {
+					$("#bc").fadeIn(500);
+					$("#agri").hide();
+					$("#rama").hide();
+					ramaderia=1;
+					agricultura=0;
+					bosc=0;
+				};
+			});
+
+			$("#bosc").click(function() {
+				if (bosc==0) {
+					$("#bc").fadeIn(500);
+					$("#rama").hide();
+					$("#agri").hide();
+					ramaderia=0;
+					agricultura=0;
+					bosc=1;
+				};
+			});
+
+
 		});
 	});
   	
@@ -110,11 +149,22 @@
 	</div>
 	<div id="treballc" class="apartat">
 		<h2>Cos del treball</h2>
-		<h4>Agricultura</h4>
-		<h4>Ramaderia</h4>
-		<h4>Explotació forestal</h4>
-		<img src="agricultura.png" width="500" align="center">
-		<p float="right">En aquest gràfic, veiem com les patates i la vinya desapareixen del tot. És especialment important en el cas de les patates, que eren un dels conreus més importants a la Roca. A més a més, apareixen les mongetes seques com a nou tipus de conreu (actualment s'ha aconseguit la denominació d'origen)</p>
+		<h4 id = "agricultura">Agricultura</h4>
+		<h4 id = "ramaderia">Ramaderia</h4>
+		<h4 id = "bosc">Explotació forestal</h4>
+		<br>
+		<div id="agri">
+			<img src="agricultura.png" width="500">
+			<p float="right">En aquest gràfic, veiem com les patates i la vinya desapareixen del tot. És especialment important en el cas de les patates, que eren un dels conreus més importants a la Roca. A més a més, apareixen les mongetes seques com a nou tipus de conreu (actualment s'ha aconseguit la denominació d'origen)</p>
+		</div>
+		<div id="rama">
+			<img src="ramaderia.png" width="500">
+			<p float="right">En aquest gràfic, veiem com ara fa 30 anys, es produeix un gran boom de ramaderia. Es deixa de fer a cada casa de tot i la gent comença a espeialitzar-se. Els porcs disminueixen i creixen molt el nombre de bovins (vaques de llet i vedells d'engreix) i conills (tot i que es tractava d'una sola granja).</p>
+		</div>
+		<div id="bc">
+			<img src="ramaderia.png" width="500">
+			<p float="right">En aquest gràfic, veiem com ara fa 30 anys, es produeix un gran boom de ramaderia. Es deixa de fer a cada casa de tot i la gent comença a espeialitzar-se. Els porcs disminueixen i creixen molt el nombre de bovins (vaques de llet i vedells d'engreix) i conills (tot i que es tractava d'una sola granja).</p>
+		</div>
 	</div>
 	<div id="conclusions" class="apartat">
 		<h2>Conclusions</h2>

@@ -180,4 +180,5 @@ h4 {
 	display: block;
 	text-decoration: underline;
 	margin: 0;
+	cursor: pointer;
 }
