@@ -14,8 +14,10 @@
   		var ramaderia = 0;
   		var bosc = 0;
 
-
 		$(".apartat").hide();
+		$("#rama").hide();
+		$("#agri").hide();
+		$("#bc").hide();
 		
 		$(window).load(function() { 
 			$('li a').click(function () {
@@ -84,9 +86,9 @@
 
 			$("#ramaderia").click(function() {
 				if (ramaderia==0) {
-					$("#bc").fadeIn(500);
+					$("#rama").fadeIn(500);
 					$("#agri").hide();
-					$("#rama").hide();
+					$("#bc").hide();
 					ramaderia=1;
 					agricultura=0;
 					bosc=0;
@@ -162,8 +164,9 @@
 			<p float="right">En aquest gràfic, veiem com ara fa 30 anys, es produeix un gran boom de ramaderia. Es deixa de fer a cada casa de tot i la gent comença a espeialitzar-se. Els porcs disminueixen i creixen molt el nombre de bovins (vaques de llet i vedells d'engreix) i conills (tot i que es tractava d'una sola granja).</p>
 		</div>
 		<div id="bc">
-			<img src="ramaderia.png" width="500">
-			<p float="right">En aquest gràfic, veiem com ara fa 30 anys, es produeix un gran boom de ramaderia. Es deixa de fer a cada casa de tot i la gent comença a espeialitzar-se. Els porcs disminueixen i creixen molt el nombre de bovins (vaques de llet i vedells d'engreix) i conills (tot i que es tractava d'una sola granja).</p>
+			<p float="right">Pel que fa a l'explotació forestal, el bosc s'ha mantingut net, i se n'ha obtingut un benefici fins fa uns 30 anys. Hi havia els carreters, que feien feixos de gabella (arbustos, com el bruc) i de costals (fusta de pi) per a vendre a Granollers. A la Roca hi havia uns 7 o 8 carreters, que feien 2 viatges cada dia. La gabella es venia als forns d'obra, a tant la càrrega (3 feixos); els costals es venien als forns de pa, també per càrrega, però aquesta de 4 feixos.<br>
+			Hi havia també la figura dels carboners, que vivien a la montanya i es dedicaven a fer carbó. Solien no ser gent del poble, sinó gent que venia de fora. Fa uns 50 anys, 14 famílies feien de carboners, visquent permanentment en barraques a la montanya.<br>
+			A poc a poc, el bosc ha anat deixant de ser rendible, degut a l'ús de tots els combustibles fòssils i l'electricitat. S'ha anat abandonant, i, actualment no s'explota el bosc i, tot i que algunes cases que tenen bosc, segueixen tallant llenya per a consum propi, la major part està abandonat i brut del tot.</p>
 		</div>
 	</div>
 	<div id="conclusions" class="apartat">
