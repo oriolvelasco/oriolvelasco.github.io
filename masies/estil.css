@@ -154,7 +154,7 @@ h2 {
 	background-color: rgba(250, 250, 250, 0.7);
 	position: relative;
 	top: 80px;
-	overflow: auto;
+	overflow-y: scroll;
 	width: 80%;
 	height: auto;
 	margin:0 auto;
@@ -168,4 +168,16 @@ h2 {
 p {
 	font-family: "ubuntu";
 	margin: 10px;
+}
+
+#treballc {
+	padding-left: 10px;
+}
+
+h4 {
+	font-family: "ubuntu";
+	font-size: 110%;
+	display: block;
+	text-decoration: underline;
+	margin: 0;
 }
