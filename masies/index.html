@@ -13,6 +13,7 @@
   		var agricultura = 0;
   		var ramaderia = 0;
   		var bosc = 0;
+  		var annexos = 0;
 
 		$(".apartat").hide();
 		$("#rama").hide();
@@ -33,6 +34,7 @@
 					objectius = 0;
   					treball = 0;
   					conclusions = 0;
+  					annexos = 0;
 				};
 		
 			});
@@ -45,6 +47,7 @@
   					introduccio = 0;
   					treball = 0;
   					conclusions = 0;
+  					annexos = 0;
 				};
 			});
 
@@ -57,6 +60,7 @@
   					introduccio = 0;
   					treball = 1;
   					conclusions = 0;
+  					annexos = 0;
 				};
 			});
 
@@ -68,8 +72,22 @@
   					introduccio = 0;
   					treball = 0;
   					conclusions = 1;
+  					annexos = 0;
 				};
 			});
+
+			$("#things").click(function() {
+				if (annexos==0) {
+					$(".apartat").fadeOut(100);
+					setTimeout(function(){$("#th").fadeIn(800);}, 200);
+					objectius=0;
+  					introduccio = 0;
+  					treball = 0;
+  					conclusions = 0;
+  					annexos = 1;
+				};
+			});
+
 
 
 
