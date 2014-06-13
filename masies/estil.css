@@ -148,6 +148,8 @@ h2 {
 	font-family: "ubuntul";
 	font-size: 170%;
 	text-decoration: underline;
+	position: relative;
+	top: 5px;
 }
 
 .apartat {
@@ -182,4 +184,6 @@ h4 {
 	text-decoration: underline;
 	margin: 0;
 	cursor: pointer;
+	display: inline;
+	margin-right: 35px;
 }
