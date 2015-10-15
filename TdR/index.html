@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>TDR</title>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="analisiSo.js"></script>
+    <script src="analisiMelodia.js"></script>
+    <script src="analisiSoDespres.js"></script>
+    <script src="../vexflow-min.js"></script>
+    <script src="escriuPartitura.js"></script>
+    <script src="FileSaver.min.js"></script>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body style="background-color: white;">
+<canvas id="canvas" width="2000" height="325" style="display: block;"></canvas>
+
+<script>
+    //definició variables
+    var context;
+    var analyser;
+    var processador;
+    var microphone;
+
+    var intensitats;
+    var melodia = [];
+    var melodiaArreglada = [];
+    var localStream;
+    var pics = [];
+    var freqPics = [];
+    var mitjana;
+    var temps = [];
+    var notes = [];
+    var t = 0;
+    var intensitat = [];
+    var llargadafft=2048;
+
+    //crear array amb noms de totes les notes
+    var C0 = 16.35;
+    var escala = [ "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" ];
+    var note = [];
+    for (var i = 0; i < 108; i++)
+    {
+        note[i] = escala[i % 12] + Math.floor(i/12);
+    }
+
+
+    //iniciar gravació quan s'apreta el botó
+    $(document).ready(function(){
+        $("#engega").click(function(){
+            melodiaArreglada = [];
+            initialize();
+        });
+    });
+
+    function initialize()
+    {
+        var get_user_media = navigator.getUserMedia;
+        get_user_media = get_user_media || navigator.webkitGetUserMedia;
+        get_user_media = get_user_media || navigator.mozGetUserMedia;
+        get_user_media.call(navigator, { "audio": true }, use_stream, function() {});
+    }
+
+    
+    // iniciar el context pel dibuix d'espectre
+    var ctx = $("#canvas").get()[0].getContext("2d");
+    var gradient = ctx.createLinearGradient(0,0,0,300);
+    gradient.addColorStop(1,'#000000');
+    gradient.addColorStop(0.75,'#ff0000');
+    gradient.addColorStop(0.25,'#ffff00');
+    gradient.addColorStop(0,'#ffffff');
+
+
+    //definició de classes
+    var Nota = function(noteName, harmonics, fantasma, freq, mitjaHarm, sumaHarm, numPics, mitjana)
+    {
+        this.nota = noteName;
+        this.harmonics = harmonics;
+        this.fantasma = fantasma;
+        this.freq = freq;
+        this.sumaHarm = sumaHarm;
+        this.mitjaHarm = mitjaHarm;
+        this.numPics = numPics;
+        this.mitja = mitjana;
+    };
+
+    var NotaArreglada = function(noteName, inici, durada, tipus)
+    {
+        this.nota=noteName;
+        this.inici=inici;
+        this.durada=durada;
+        this.tipus=tipus;
+    };
+
+    NotaArreglada.prototype.retornaFinal = function() {
+        return this.inici + this.durada;
+    };
+
+    NotaArreglada.prototype.retornaInici = function() {
+        return this.inici;
+    };
+
+    NotaArreglada.prototype.retornaNota = function() {
+        return this.nota;
+    };
+
+    NotaArreglada.prototype.retornaDurada = function() {
+        return this.durada;
+    };
+
+    NotaArreglada.prototype.retornaTipus = function() {
+        return this.tipus;
+    };
+
+    var pic = function(intensitat, posicio)
+    {
+        this.pic = posicio;
+        this.intensitat = intensitat;
+    };
+
+    //definició del context d'audio i nodes necessaris
+    function use_stream(stream) 
+    {
+        localStream = stream;
+        context = new AudioContext();
+        microphone = context.createMediaStreamSource(stream);
+        window.source = microphone;
+        processador = context.createScriptProcessor(2048, 1, 1);
+        processador.connect(context.destination);
+
+        // setup a analyzer
+        analyser = context.createAnalyser();
+        analyser.fftSize = 4096;
+        analyser.maxDecibels = -10;
+        analyser.smoothingTimeConstant = 0.3;
+
+        microphone.connect(analyser);
+        analyser.connect(processador);
+
+        //microphone.connect(context.destination);
+        processador.onaudioprocess = window.capture_audio;
+
+        $("#atura").unbind();
+        $("#atura").unbind('click').click(function(evt)
+        {
+            evt.stopPropagation();
+            evt.preventDefault();
+            evt.stopImmediatePropagation();
+            localStream.stop();
+            processador.disconnect(context.destination);
+            microphone.disconnect(analyser);
+            analyser.disconnect(processador);
+            //analisiDespres();
+            setTimeout(function(){ analisiDespres(); }, 500);
+            //setTimeout(function(){ console.log(melodiaArreglada); }, 1500);
+
+        });
+    }
+    
+    //dibuixa l'especte
+    function drawSpectrum() 
+    {
+        for ( var i = 0; i < (intensitats.length); i++ ){
+            var value = intensitats[i];
+            ctx.fillRect(i*2,325-value,1,325);
+        }
+    };
+
+</script>
+<button id = "atura">Parar stream</button>
+<button id = "engega">Comença a gravar</button>
+<br>
+<br>
+<canvas id="partitura" width="1500" height="300"></canvas>
+<div id = "resultat"></div>
+</body>
+</html>
