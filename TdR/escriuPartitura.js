@@ -135,8 +135,9 @@ function escriuPartitura()
 			if(notesenVeus[i][j-1].retornaTipus()!="silenci")
 			{
 				llargadaSilenci = notesenVeus[i][j].retornaInici()-notesenVeus[i][j-1].retornaFinal();
-				if(llargadaSilenci!=0)
+				if(llargadaSilenci!=0 && donaNegres(llargadaSilenci)!=0.25)
 				{
+					console.log(donaNegres(llargadaSilenci));
 					var m = new NotaArreglada(notesenVeus[i][j].nota[0], notesenVeus[i][j-1].retornaFinal(), llargadaSilenci, "silenci");
 					notesenVeus[i].splice(j, 0, m);
 				}
@@ -158,6 +159,7 @@ function escriuPartitura()
 			var temps = notesenVeus[i][j].retornaDurada()/23;
 			llargadaVeu[i] += donaNegres(temps);
 			var value = retornaFigura(temps);
+
 			if (notesenVeus[i][j].retornaTipus()=="silenci") 
 			{
 				value+="r";
@@ -181,7 +183,7 @@ function escriuPartitura()
 			else
 				valorPunt = 2;
 
-			if(donaNegres(temps)!=0.25)
+			if(donaNegres(temps)!=factor*0.25 || value.slice(0,2) != "16")
 			{
 				if(value.length==valorPunt)
 					x.addDotToAll();
@@ -201,16 +203,19 @@ function escriuPartitura()
 	});
 
 	var max = 0;
+	var llVeu;
 	for (var i = 0; i < llargadaVeuRodo.length; i++) 
 	{
-		var llVeu = llargadaVeuRodo[i];
+		llVeu = llargadaVeuRodo[i];
 		console.log(llVeu);
 		if(llVeu>max)
 			max=llVeu;
 	}
 
-	for (var i = 0; i < partitura.length; i++) {
-		for (var j = 0; j < Math.abs(partitura[i].length-max); j++) {
+	for (var i = 0; i < partitura.length; i++) 
+	{
+		for (var j = 0; j < Math.abs(llargadaVeuRodo[i]-max); j++) 
+		{
 			var x = new Vex.Flow.StaveNote({keys: ["A/4"], duration: "16r"});
 			partitura[i].push(x);
 			llargadaVeuRodo[i]++;
@@ -219,7 +224,6 @@ function escriuPartitura()
 	};
 	
 	console.log(partitura);
-	console.log(llargadaVeu);
 	console.log(llargadaVeuRodo);
 
 	//crear totes les veus
@@ -252,15 +256,15 @@ function escriuPartitura()
 }
 
 
-function donaNegres(durada)
+function donaNegres(temps)
 {
 	var resta=200;
 	var resultat;
 	for (var i = 0; i < duradaFigures.length; i++) 
 	{
-		if(Math.abs(durada-duradaFigures[i].durada)<resta)
+		if(Math.abs(temps-duradaFigures[i].durada)<resta)
 		{
-			resta=Math.abs(durada-duradaFigures[i].durada);
+			resta=Math.abs(temps-duradaFigures[i].durada);
 			resultat = duradaFigures[i].durada/factor;
 		}
 			

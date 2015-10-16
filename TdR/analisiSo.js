@@ -22,9 +22,9 @@ window.capture_audio = function(event)
     };
 
     //actualitzar espectre
-    ctx.clearRect(0, 0, 2000, 325);
+   /* ctx.clearRect(0, 0, 2000, 325);
     ctx.fillStyle=gradient;
-    drawSpectrum(intensitats);
+    drawSpectrum(intensitats);*/
 
     temps.push(pics);
     t++;
