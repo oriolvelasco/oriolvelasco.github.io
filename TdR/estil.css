@@ -41,3 +41,14 @@ button:active {
 	right: 20px;
 }
 
+#resultat
+{
+	position: relative;
+	top: -50px;
+}
+
+table
+{
+	padding: 5px;
+}
+
