@@ -288,6 +288,7 @@ function retornaFigura(temps)
 
 function escriuResultat()
 {
+	document.getElementById('resultat').innerHTML = "";
 	var text = "";
 	text += "<br><table><tr><th>Nota</th><th>Inici</th><th>Durada</th></tr>";
 
