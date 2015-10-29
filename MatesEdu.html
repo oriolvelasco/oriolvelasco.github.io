@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+
+</style>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="d3.min.js"></script>
+<script>
+$(document).ready(function () {
+  $("#boto").click(function () {
+    var ubec = document.getElementById("a1").value;
+    calcula(ubec);
+  });
+});
+
+function calcula (ubec) 
+{
+  var vv=0;
+  var cv=0;
+  var vc=0;
+  var cc=0;
+  var a = [];
+  a= ubec.split('');
+  for (var i = 0; i < a.length-1; i++) 
+  {
+    if(alpha(a[i]))
+    {
+      var j = i+1;
+      while(!alpha(a[j]))
+      {
+        j++;
+      }
+      
+      if (alpha(a[j]))
+      {
+        if(vocal(a[i])===true && vocal(a[j])===true)
+          vv++;
+        if(vocal(a[i])===false && vocal(a[j])===true)
+          cv++;
+        if(vocal(a[i])===true && vocal(a[j])===false)
+          vc++;
+        if(vocal(a[i])===false && vocal(a[j])===false)
+          cc++;
+      }
+    }
+  };
+  console.log(vv, cv, vc, cc);
+  var ufta = document.getElementById("ubec");
+  ufta.innerHTML = "Vocal-Vocal: " + vv + " Consonant-vocal: " + cv + " Vocal-consonant: " + vc + " Consonant-Consnoant: " + cc;
+}
+
+function alpha(c)
+{
+  console.log(c);
+  if(c.toLowerCase()!=c.toUpperCase()) 
+  {
+    return true;
+  }
+  return false;
+}
+
+function vocal(a)
+{
+  if (a=='A' || a=='E' || a=='I' || a=='O' || a=='U' || a=='a' || a=='e' || a=='i' || a=='o' || a=='u')
+  {
+    return true;
+  }
+  return false;
+}
+
+</script>
+<textarea cols="50" rows="4" class="condicions" id="a1"> </textarea><br>
+<button type="button" id = "boto">Clica i ubec</button>
+<p id="ubec"></p>
+</body>
+</html>
