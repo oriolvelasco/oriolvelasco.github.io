@@ -41,16 +41,18 @@ function calcula (ubec)
           break;
         }
       }
-      
+
       if (alpha(a[j]))
       {
-        if(vocal(a[i])===true && vocal(a[j])===true)
+        var vocJ=vocal(a[j]);
+        var vocI=vocal(a[i]);
+        if(vocI && vocJ)
           vv++;
-        if(vocal(a[i])===false && vocal(a[j])===true)
+        if(!vocI && vocJ)
           cv++;
-        if(vocal(a[i])===true && vocal(a[j])===false)
+        if(vocI && !vocJ)
           vc++;
-        if(vocal(a[i])===false && vocal(a[j])===false)
+        else
           cc++;
       }
     }
