@@ -28,7 +28,7 @@ function calcula (ubec)
   var cc=0;
   var a = [];
   a= ubec.split('');
-  for (var i = 0; i < a.length-1; i++) 
+  for (var i = 0; i < a.length-2; i++) 
   {
     if(alpha(a[i]))
     {
@@ -36,6 +36,10 @@ function calcula (ubec)
       while(!alpha(a[j]))
       {
         j++;
+        if(j>=a.length)
+        {
+          break;
+        }
       }
       
       if (alpha(a[j]))
@@ -51,6 +55,7 @@ function calcula (ubec)
       }
     }
   };
+  stop:
   console.log(vv, cv, vc, cc);
   var ufta = document.getElementById("ubec");
   ufta.innerHTML = "Vocal-Vocal: " + vv + " Consonant-vocal: " + cv + " Vocal-consonant: " + vc + " Consonant-Consnoant: " + cc;
