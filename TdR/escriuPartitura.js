@@ -303,5 +303,5 @@ function escriuResultat()
 
     text+="</table>";
 
-    document.getElementById('resultat').innerHTML += text;
+    document.getElementById('resultat').innerHTML = text;
 }
