@@ -10,6 +10,7 @@ var tempo = 60;
 var factor = tempo/60;
 
 
+
 var duradaFigures = [];
 duradaFigures[0] = {"figura": "rodona", "durada": factor*4, "signe": "1"};
 duradaFigures[1] = {"figura": "blancapp", "durada": factor*3.5, "signe": "2dd"};
@@ -27,13 +28,14 @@ duradaFigures[9] = {"figura": "semicorxera", "durada": factor*0.25, "signe": "16
 
 function escriuPartitura() 
 {
+	console.log(instant);
 	notesenVeus = [];
 	doblesJunts = [];
 	partitura = [];
  	var canvas = $("#partitura")[0];
  	var context = $("#partitura").get()[0].getContext("2d");
  	context.clearRect(0, 0, canvas.width, canvas.height);
-	var renderer = new Vex.Flow.Renderer(canvas,
+	var renderer = new Vex.Flow.Renderer(canvas, 
 		Vex.Flow.Renderer.Backends.CANVAS);
 
 	var ctx = renderer.getContext();
@@ -55,7 +57,6 @@ function escriuPartitura()
 		}
 
 		var ubec = {"nota":nota + "/" + octava, "inici": e.inici, "durada": e.durada};
-
 		return ubec;
 	});
 	console.log(esborrable);
@@ -124,7 +125,7 @@ function escriuPartitura()
 	for (var i = 0; i < notesenVeus.length; i++) 
 	{
 		llargadaSilenci = notesenVeus[i][0].retornaInici()-notesenVeus[0][0].retornaInici();
-		if(llargadaSilenci!=0)
+		if(llargadaSilenci>4 && donaNegres(llargadaSilenci/instant)!=0.25)
 		{
 			var h = new NotaArreglada(notesenVeus[i][0].nota[0], notesenVeus[0][0].retornaInici(), llargadaSilenci, "silenci");
 			notesenVeus[i].splice(0, 0, h);
@@ -135,9 +136,9 @@ function escriuPartitura()
 			if(notesenVeus[i][j-1].retornaTipus()!="silenci")
 			{
 				llargadaSilenci = notesenVeus[i][j].retornaInici()-notesenVeus[i][j-1].retornaFinal();
-				if(llargadaSilenci!=0 && donaNegres(llargadaSilenci)!=0.25)
+				if(llargadaSilenci>4 && donaNegres(llargadaSilenci/instant)!=0.25)
 				{
-					console.log(donaNegres(llargadaSilenci));
+					console.log(donaNegres(llargadaSilenci/instant));
 					var m = new NotaArreglada(notesenVeus[i][j].nota[0], notesenVeus[i][j-1].retornaFinal(), llargadaSilenci, "silenci");
 					notesenVeus[i].splice(j, 0, m);
 				}
@@ -156,7 +157,7 @@ function escriuPartitura()
 		for (var j = 0; j < notesenVeus[i].length; j++) 
 		{
 			//buscar la nota i si és silenci
-			var temps = notesenVeus[i][j].retornaDurada()/23;
+			var temps = notesenVeus[i][j].retornaDurada()/instant;
 			llargadaVeu[i] += donaNegres(temps);
 			var value = retornaFigura(temps);
 
@@ -258,13 +259,14 @@ function escriuPartitura()
 
 function donaNegres(temps)
 {
+	console.log(temps);
 	var resta=200;
 	var resultat;
 	for (var i = 0; i < duradaFigures.length; i++) 
 	{
-		if(Math.abs(temps-duradaFigures[i].durada)<resta)
+		if(Math.abs(duradaFigures[i].durada-temps)<resta)
 		{
-			resta=Math.abs(temps-duradaFigures[i].durada);
+			resta=Math.abs(duradaFigures[i].durada-temps);
 			resultat = duradaFigures[i].durada/factor;
 		}
 			
@@ -275,8 +277,9 @@ function donaNegres(temps)
 function retornaFigura(temps)
 {
 	var resultat;
-	var resta=10;
-	for (var i = 0; i < duradaFigures.length; i++) {
+	var resta=200;
+	for (var i = 0; i < duradaFigures.length; i++) 
+	{
 		if(Math.abs(duradaFigures[i].durada-temps)<resta)
 		{
 			resta=Math.abs(duradaFigures[i].durada-temps);

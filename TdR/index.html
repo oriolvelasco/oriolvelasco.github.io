@@ -39,6 +39,8 @@
     var t = 0;
     var intensitat = [];
     var llargadafft=2048;
+    var instant;
+
 
     //crear array amb noms de totes les notes
     var C0 = 16.35;
@@ -98,7 +100,8 @@
     };
 
     NotaArreglada.prototype.retornaFinal = function() {
-        return this.inici + this.durada;
+        var ubec = this.inici + this.durada;
+        return ubec;
     };
 
     NotaArreglada.prototype.retornaInici = function() {
@@ -144,6 +147,7 @@
 
         //microphone.connect(context.destination);
         processador.onaudioprocess = window.capture_audio;
+        instant = context.sampleRate/llargadafft;
 
         $("#atura").unbind();
         $("#atura").unbind('click').click(function(evt)
